@@ -1,0 +1,125 @@
+---
+import Footer from "../components/Footer.astro"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceeci :: Readings - Lesson 16</title>
+    <link href="https://inicio.ceeci.mx/web/images/ceeci-logo-solo-favicon.png" rel="shortcut icon" type="image/png">
+    <!-- jQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap después de jQuery -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Materialize-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Scripts Adicionales-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div style="align-content: center; background-color: black; color: white;">
+        <h1 style="padding-left: 20px;">ceeci.mx</h1>
+    </div>
+
+    <section class="onesection blanco center-align">
+        <section id="contenidoTema">
+            <img src="/images/banner-page.png" width="100%" alt="Banner">
+        </section>
+
+        <article id="videosTitulo">
+            <h1><span id="general_titulo">LISTENING AND READING</span></h1>
+			<h2><span id="general_titulo">LESSON 16 - Gloria Gusto, Tom Atkins and Terry Archer</span></h2>
+			
+        </article>
+    </section>
+    <article class="blanco">
+        <div class="ejercicio-idiomas">
+            <div id="contenido-ejercicio"></div>
+
+            <div class="cols-1 center-align">
+                <p>
+                    <audio controls id="sonido">
+                        <source src="/audios/lesson16.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el audio, favor de actualizarlo.
+                    </audio>
+                </p>
+            </div>
+          
+            <div class="cols-2 center-align">
+				<h3 id="s-2 ">Gloria Gusto: </h3>
+                <p id="s-3">Hi, there! My name´s Gloria Gusto.</p>
+                <p id="s-5">I´m an actress.</p>
+                <p id="s-6">I´m from London.</p>
+                <p id="s-7">I´ve got a flat in London and a house in Hollywood, with a swimming pool.</p>
+                <p id="s-10">I´ve got a new Rolls-Royce and a lot of money in the bank.</p>
+                <p id="s-13">I´ve got a husband, and three wonderful children in Hollywood.</p>
+                <p id="s-17">Life´s great!</p>
+                <br>
+                <p id="s-18">I´ve got everything!</p>
+            </div>
+
+            <div class="cols-2 center-align">
+				<h3 id="s-20 ">Tom Atkins: </h3>
+                <p id="s-21">Hello, my name´s Tom Atkins.</p>
+                <p id="s-28">I´m from London, too.</p>
+                <p id="s-30">I´m broke. I haven´t got any money.</p>
+                <p id="s-34">I haven´t got a job or a house, or a car</p>
+                <p id="s-38">I haven´t got a wife, and I haven´t got any children.</p>
+                <p id="s-42">Life´s terrible!</p>
+                <p id="s-43">I haven´t got anything!</p>
+                <br>
+            </div>
+
+			<div class="cols-2 center-align">
+				<h3 id="s-44 ">Terry Archer : </h3>
+                <p id="s-45">Look at this man.</p>
+                <p id="s-47">His name´s Terry Archer.</p>
+                <p id="s-50">He ins´t from London.</p>
+                <p id="s-52">He´s from Oxford.</p>
+                <p id="s-54">He´s a factory worker.</p>
+                <p id="s-56">He´s got a good job.</p>
+                <p id="s-58">He´s got a car.</p>
+				<p id="s-60">He hasn´t got a big house, he´s got a flat.</p>
+                <p id="s-63">He´s got a wife, but he hasn´t got any children.</p>
+				<p id="s-65">Life´s all right.</p>
+                <br>
+            </div>
+
+            <p class="oculto">Playback position: <span id="tiempo"></span></p>
+                <Footer></Footer>
+            <!-- JavaScript -->
+            <script type="module">
+                let segundo = 0;
+
+                function normaliza() {
+                    $("p[id^='s-']").css("font-size", "14px");
+                }
+
+                function resalta(s) {
+                    if ($("#s-" + s).length != 0) {
+                        normaliza();
+                        $("#s-" + s).css("font-size", "20px");
+                    }
+                }
+
+                var son = document.getElementById("sonido");
+                son.ontimeupdate = function () {
+                    let segundo = parseInt(son.currentTime);
+                    resalta(segundo);
+                    document.getElementById("tiempo").innerHTML = son.currentTime;
+                };
+                normaliza();
+            </script>
+        </div>
+    </article>
+</body>
+</html>
